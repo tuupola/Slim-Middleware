@@ -67,7 +67,8 @@ class HttpBasicAuth extends \Slim\Middleware
                 $this->app->response->header('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm));
                 return;
             }
+        } else {
+            $this->next->call();
         }
-        $this->next->call();
     }
 }
